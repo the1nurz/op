@@ -1,3 +1,21 @@
 build/
 build-mingw/
 .tools/
+
+# CMake outputs, including builds in arbitrary directories.
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+Makefile
+*.exe
+*.obj
+*.o
+*.pdb
+*.ilk
+*.log
+
+# Accidental nested repository / publication copies.
+.git/
+.publish-op/
