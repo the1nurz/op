@@ -1,0 +1,16 @@
+#pragma code_page(65001)
+#include <windows.h>
+#include "module1_resources.h"
+
+IDD_GROUP_DIALOG DIALOGEX 0, 0, 250, 190
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CONTROLPARENT
+CAPTION "Робота1 — вибір групи ФІОТ"
+FONT 9, "Segoe UI"
+BEGIN
+    LTEXT "Оберіть студентську групу:", -1, 12, 12, 220, 14
+    LISTBOX IDC_GROUP_LIST, 12, 32, 226, 116,
+        LBS_NOTIFY | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP | WS_BORDER
+    DEFPUSHBUTTON "Так", IDOK, 112, 164, 58, 16
+    PUSHBUTTON "Відміна", IDCANCEL, 178, 164, 60, 16
+END

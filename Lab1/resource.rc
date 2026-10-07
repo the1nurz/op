@@ -1,0 +1,9 @@
+#pragma code_page(65001)
+#include <windows.h>
+#include "resource.h"
+
+IDR_MAIN_MENU MENU
+BEGIN
+    MENUITEM "Робота1", IDM_WORK1
+    MENUITEM "Робота2", IDM_WORK2
+END
