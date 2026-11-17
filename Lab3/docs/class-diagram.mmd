@@ -1,0 +1,69 @@
+classDiagram
+    class Shape {
+        <<abstract>>
+        -int x1_
+        -int y1_
+        -int x2_
+        -int y2_
+        +Shape(int x, int y)
+        +SetEnd(int x, int y) void
+        +StartX() int
+        +StartY() int
+        +EndX() int
+        +EndY() int
+        +Draw(HDC, bool) void
+        +virtual ~Shape()
+    }
+    class PointShape {
+        +PointShape(int x, int y)
+        +Draw(HDC, bool) void
+    }
+    class LineShape {
+        +LineShape(int x, int y)
+        +Draw(HDC, bool) void
+    }
+    class RectShape {
+        +RectShape(int x, int y)
+        +Draw(HDC, bool) void
+    }
+    class EllipseShape {
+        +EllipseShape(int x, int y)
+        +Draw(HDC, bool) void
+    }
+    class MyEditor {
+        +static constexpr int kCapacity = 128
+        -Shape* pcshape[128]
+        -int count_
+        -int toolId_
+        -Shape* draft_
+        +SetTool(int) bool
+        +Begin(int, int) bool
+        +Update(int, int) void
+        +Commit() bool
+        +Cancel() bool
+        +Draw(HDC) void
+        +Clear() void
+    }
+    class MainWindow {
+        -HWND hwnd_
+        -HWND toolbar_
+        -HWND tooltip_
+        -HIMAGELIST imageList_
+        -int toolbarHeight_
+        -HINSTANCE instance_
+        -MyEditor editor_
+        +Create(HINSTANCE, int) bool
+        +Run() int
+        -static WndProc(HWND, UINT, WPARAM, LPARAM) LRESULT
+        -OnNotify(NMHDR*, bool&) LRESULT
+        -OnInitMenuPopup(HMENU, UINT, BOOL) LRESULT
+        -OnPaint() LRESULT
+        -OnSize(UINT, int, int) LRESULT
+        -OnCommand(int) LRESULT
+    }
+    Shape <|-- PointShape
+    Shape <|-- LineShape
+    Shape <|-- RectShape
+    Shape <|-- EllipseShape
+    MyEditor *-- "0..128" Shape : owns
+    MainWindow *-- MyEditor : owns
