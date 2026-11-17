@@ -1,0 +1,78 @@
+classDiagram
+    class Shape {
+        <<abstract>>
+        -int x1_
+        -int y1_
+        -int x2_
+        -int y2_
+        +SetEnd(int, int) void
+        +StartX() int
+        +StartY() int
+        +EndX() int
+        +EndY() int
+        +Show(HDC, bool)* void
+        +~Shape()
+    }
+    class PointShape {
+        +Show(HDC, bool) void
+    }
+    class LineShape {
+        +Show(HDC, bool) void
+        #Show(HDC, int, int, int, int, bool) void
+    }
+    class RectShape {
+        +Show(HDC, bool) void
+        #Show(HDC, int, int, int, int, bool) void
+    }
+    class EllipseShape {
+        +Show(HDC, bool) void
+        #Show(HDC, int, int, int, int, bool) void
+    }
+    class CircleLineShape {
+        +Show(HDC, bool) void
+    }
+    class CubeShape {
+        +Show(HDC, bool) void
+    }
+    class MyEditor {
+        -Shape* pcshape[128]
+        -Shape* draft_
+        -int count_
+        -int toolId_
+        -CreateShape(int, int) Shape*
+        +SetTool(int) bool
+        +CurrentTool() int
+        +Begin(int, int) bool
+        +Update(int, int) void
+        +Commit() bool
+        +Cancel() bool
+        +HasDraft() bool
+        +Count() int
+        +Show(HDC) void
+        +Clear() void
+        +~MyEditor()
+    }
+    class MainWindow {
+        -HWND hwnd_
+        -HWND toolbar_
+        -HWND tooltip_
+        -HIMAGELIST imageList_
+        +Create(HINSTANCE, int) bool
+        +Run() int
+        -OnPaint() LRESULT
+        -OnCommand(int) LRESULT
+        -OnNotify(NMHDR*, bool&) LRESULT
+    }
+    Shape <|-- PointShape
+    Shape <|-- LineShape : virtual
+    Shape <|-- RectShape : virtual
+    Shape <|-- EllipseShape : virtual
+    LineShape <|-- CircleLineShape
+    EllipseShape <|-- CircleLineShape
+    LineShape <|-- CubeShape
+    RectShape <|-- CubeShape
+    MyEditor *-- "0..128" Shape : pcshape
+    MyEditor *-- "0..1" Shape : draft
+    MainWindow ..> MyEditor : uses global static editor
+    note for Shape "virtual destructor; one shared base in each composite shape"
+    note for MyEditor "static MyEditor editor at file scope in MainWindow.cpp"

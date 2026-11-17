@@ -1,0 +1,7 @@
+#include "resource.h"
+IDB_TOOL_DOT BITMAP "@CMAKE_CURRENT_SOURCE_DIR@/resources/dot.bmp"
+IDB_TOOL_LINE BITMAP "@CMAKE_CURRENT_SOURCE_DIR@/resources/line.bmp"
+IDB_TOOL_RECT BITMAP "@CMAKE_CURRENT_SOURCE_DIR@/resources/rectangle.bmp"
+IDB_TOOL_ELLIPSE BITMAP "@CMAKE_CURRENT_SOURCE_DIR@/resources/ellipse.bmp"
+IDB_TOOL_CIRCLE_LINE BITMAP "@CMAKE_CURRENT_SOURCE_DIR@/resources/circle-line.bmp"
+IDB_TOOL_CUBE BITMAP "@CMAKE_CURRENT_SOURCE_DIR@/resources/cube.bmp"
