@@ -1,0 +1,56 @@
+# Створені файли Lab5
+
+Усі перелічені файли нові. Файли Lab4 не змінювалися.
+Папки build і tmp містять лише локальні результати збирання та QA і виключені з Git.
+
+- .gitignore
+- CMakeLists.txt
+- docs/class-diagram.mmd
+- docs/class-diagram.png
+- docs/example.txt
+- docs/files.md
+- docs/screenshots/after-delete.png
+- docs/screenshots/all-shapes.png
+- docs/screenshots/table-selection.png
+- docs/verification.md
+- README.md
+- resources/circle-line.bmp
+- resources/cube.bmp
+- resources/dot.bmp
+- resources/ellipse.bmp
+- resources/Lab5.rc.in
+- resources/line.bmp
+- resources/rectangle.bmp
+- resources/resource.h
+- src/CircleLineShape.cpp
+- src/CircleLineShape.h
+- src/CubeShape.cpp
+- src/CubeShape.h
+- src/EllipseShape.cpp
+- src/EllipseShape.h
+- src/GdiGuards.h
+- src/LineShape.cpp
+- src/LineShape.h
+- src/main.cpp
+- src/MainWindow.cpp
+- src/MainWindow.h
+- src/MyEditor.cpp
+- src/MyEditor.h
+- src/MyTable.cpp
+- src/MyTable.h
+- src/PointShape.cpp
+- src/PointShape.h
+- src/RectShape.cpp
+- src/RectShape.h
+- src/Shape.cpp
+- src/Shape.h
+- src/ShapeFactory.cpp
+- src/ShapeFactory.h
+- tests/editor_smoke.cpp
+- tests/model_smoke.cpp
+- tests/window_smoke.cpp
+- tools/make_report.py
+- tools/make_docx_reports.py
+- Звіт/Звіт_Lab5_Варіант_27.docx
+- Звіт/Звіт_Lab5_Варіант_27.html
+- Звіт/Звіт_Lab5_Варіант_27.md

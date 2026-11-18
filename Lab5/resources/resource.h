@@ -1,0 +1,13 @@
+#pragma once
+#define IDB_TOOL_DOT 201
+#define IDB_TOOL_LINE 202
+#define IDB_TOOL_RECT 203
+#define IDB_TOOL_ELLIPSE 204
+#define IDB_TOOL_CIRCLE_LINE 205
+#define IDB_TOOL_CUBE 206
+#define IDD_TABLE 300
+#define IDC_SHAPES 301
+#define IDC_DELETE_SHAPE 302
+#define IDM_OPEN 3
+#define IDM_SAVE 4
+#define IDM_TABLE 5

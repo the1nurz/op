@@ -1,0 +1,73 @@
+classDiagram
+    class Shape {
+        <<abstract>>
+        -int x1, y1, x2, y2
+        +Show(HDC, bool)* void
+        +TypeId()* int
+        +Bounds() RECT
+        +SetEnd(int, int) void
+        +~Shape()
+    }
+    class MyEditor {
+        <<Meyers Singleton>>
+        -MyEditor()
+        -~MyEditor()
+        -Shape* pcshape[128]
+        -Shape* draft
+        -int selected
+        +Instance()$ MyEditor&
+        +Begin(int, int) bool
+        +Update(int, int) void
+        +Commit() bool
+        +Show(HDC) void
+        +Select(int) void
+        +Delete(int) bool
+        +Save(path, error) bool
+        +Load(path, error) bool
+    }
+    class MyTable {
+        -HWND hwnd, list
+        -Callback callback
+        -void* context
+        +Open(HINSTANCE, HWND) bool
+        +Close() void
+        +SetRows(rows, selected) void
+        +SetCallback(callback, context) void
+        +ProcessMessage(MSG) bool
+    }
+    class TableRow {
+        +wstring type
+        +int x1, y1, x2, y2
+    }
+    class MainWindow {
+        -MyTable table
+        +Create(HINSTANCE, int) bool
+        +Run() int
+        -RefreshTable() void
+        -TableEvent(context, event, row)$ void
+        -FileCommand(bool) void
+    }
+    class ShapeFactory {
+        <<module>>
+        +ShapeTypes(count) ShapeType*
+        +FindShapeType(id) ShapeType*
+        +CreateShapeByType(id, x, y) Shape*
+    }
+    Shape <|-- PointShape
+    Shape <|-- LineShape : virtual
+    Shape <|-- RectShape : virtual
+    Shape <|-- EllipseShape : virtual
+    LineShape <|-- CircleLineShape
+    EllipseShape <|-- CircleLineShape
+    LineShape <|-- CubeShape
+    RectShape <|-- CubeShape
+    MyEditor *-- "0..128" Shape : completed
+    MyEditor *-- "0..1" Shape : draft
+    MainWindow ..> MyEditor : Instance
+    MainWindow *-- "1" MyTable
+    MainWindow ..> ShapeFactory : names and tools
+    MyEditor ..> ShapeFactory : create
+    ShapeFactory ..> Shape : returns
+    MyTable ..> TableRow : values
+    note for MyTable "Callback events Select Delete Closed; no dependency on editor or shapes"
+    note for MyEditor "local static instance; copy and assignment deleted"
